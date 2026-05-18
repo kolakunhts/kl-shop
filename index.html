@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="lo">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KL SHOP</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="logo">
+            <img src="img/kor.png" alt="KL SHOP">
+        </div>
+
+        <div class="announcement-bar">
+            <div class="marquee-text">
+                ຍີນດີຕອ້ນຮັບທຸກທ່ານເຂົ້າ KL SHOP 📣ໂປຮໂມຊັນພຽງທ່ານຊື້ເກີບເບື້ອງຊ້າຍ ເເຖມໄປເລີຍເບື້ອງຂວາ ເເລະ ສົ່ງຟຣີທົ່ວປະເທດລາວ🇱🇦
+            </div>
+        </div>
+
+        <nav class="nav-menu">
+            <a href="#home" class="nav-link"><i class="fas fa-home"></i> ໜ້າຫຼັກ</a>
+            <a href="#products" class="nav-link"><i class="fas fa-th-large"></i> ສິນຄ້າ</a>
+            <a href="#order" class="nav-link"><i class="fas fa-shopping-cart"></i> ການສັ່ງຊື້</a>
+            <a href="#contact" class="nav-link"><i class="fa-solid fa-user"></i> ຕິດຕໍ່</a>
+        </nav>
+    </header>
+
+    <button id="cart-toggle" class="cart-floating-btn" type="button" aria-label="ເປີດກະຕ່າສິນຄ້າ">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="floating-cart-badge">0</span>
+    </button>
+
+    <section id="home" class="banner-sec">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="text-animation">
+                        <span></span>
+                    </div>
+                    <div class="banner-text">
+                        <span>ໂປຣໂມຊັນພິເສດໃນຊວ້ງໜ໊າຝົນ</span>
+                        <h1>ພຽງເເຕ່ທ່ານໃສ່ລະຫັດໂຄ້ດ<br>KL50 ຮັບສວ່ນຫຼຸດ 50% </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="deal-sec bg-color py-5">
+        <div class="container">
+            <div class="d-flex justify-content-center">
+                <div class="pe-5 text-center">
+                    <h3 class="title">Best Deals of This Week !</h3>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-box">
+                        <div class="pr-img">
+                            <div class="img"><img src="img/1.jpg" alt="Sports Delight Sneakers"></div>
+                            <div class="tags">
+                                <div class="nav-btn"><a href="">ເພີ່ມໃສ່ກະຕ່າ</a></div>
+                                <ul class="share-pr"><li><a href=""><i class="fa-solid fa-eye"></i></a></li></ul>
+                            </div>
+                        </div>
+                        <div class="pr-txt">
+                            <div class="price">$99.00/-</div>
+                            <p>Sports Delight Sneakers</p>
+                            <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-box">
+                        <div class="pr-img">
+                            <div class="img"><img src="img/2.jpg" alt="Blue Runner Sneakers"></div>
+                            <div class="tags">
+                                <div class="nav-btn"><a href="">ເພີ່ມໃສ່ກະຕ່າ</a></div>
+                                <ul class="share-pr"><li><a href=""><i class="fa-solid fa-eye"></i></a></li></ul>
+                            </div>
+                        </div>
+                        <div class="pr-txt">
+                            <div class="price">$89.00/-</div>
+                            <p>Blue Runner Sneakers</p>
+                            <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-box">
+                        <div class="pr-img">
+                            <div class="img"><img src="img/3.jpg" alt="Classic Walk Shoes"></div>
+                            <div class="tags">
+                                <div class="nav-btn"><a href="">ເພີ່ມໃສ່ກະຕ່າ</a></div>
+                                <ul class="share-pr"><li><a href=""><i class="fa-solid fa-eye"></i></a></li></ul>
+                            </div>
+                        </div>
+                        <div class="pr-txt">
+                            <div class="price">$79.00/-</div>
+                            <p>Classic Walk Shoes</p>
+                            <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-box">
+                        <div class="pr-img">
+                            <div class="img"><img src="img/4.jpg" alt="Urban Street Shoes"></div>
+                            <div class="tags">
+                                <div class="nav-btn"><a href="">ເພີ່ມໃສ່ກະຕ່າ</a></div>
+                                <ul class="share-pr"><li><a href=""><i class="fa-solid fa-eye"></i></a></li></ul>
+                            </div>
+                        </div>
+                        <div class="pr-txt">
+                            <div class="price">$109.00/-</div>
+                            <p>Urban Street Shoes</p>
+                            <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-box">
+                        <div class="pr-img">
+                            <div class="img"><img src="img/5.jpg" alt="Comfort Daily Shoes"></div>
+                            <div class="tags">
+                                <div class="nav-btn"><a href="">ເພີ່ມໃສ່ກະຕ່າ</a></div>
+                                <ul class="share-pr"><li><a href=""><i class="fa-solid fa-eye"></i></a></li></ul>
+                            </div>
+                        </div>
+                        <div class="pr-txt">
+                            <div class="price">$69.00/-</div>
+                            <p>Comfort Daily Shoes</p>
+                            <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-box">
+                        <div class="pr-img">
+                            <div class="img"><img src="img/pr-1.png" alt="Top Sales Runner"></div>
+                            <div class="tags">
+                                <div class="nav-btn"><a href="">ເພີ່ມໃສ່ກະຕ່າ</a></div>
+                                <ul class="share-pr"><li><a href=""><i class="fa-solid fa-eye"></i></a></li></ul>
+                            </div>
+                        </div>
+                        <div class="pr-txt">
+                            <div class="price">$119.00/-</div>
+                            <p>Top Sales Runner</p>
+                            <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-box">
+                        <div class="pr-img">
+                            <div class="img"><img src="img/pr-2.png" alt="Fashion Step Shoes"></div>
+                            <div class="tags">
+                                <div class="nav-btn"><a href="">ເພີ່ມໃສ່ກະຕ່າ</a></div>
+                                <ul class="share-pr"><li><a href=""><i class="fa-solid fa-eye"></i></a></li></ul>
+                            </div>
+                        </div>
+                        <div class="pr-txt">
+                            <div class="price">$129.00/-</div>
+                            <p>Fashion Step Shoes</p>
+                            <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-box">
+                        <div class="pr-img">
+                            <div class="img"><img src="img/pr-3.png" alt="Sport Max Shoes"></div>
+                            <div class="tags">
+                                <div class="nav-btn"><a href="">ເພີ່ມໃສ່ກະຕ່າ</a></div>
+                                <ul class="share-pr"><li><a href=""><i class="fa-solid fa-eye"></i></a></li></ul>
+                            </div>
+                        </div>
+                        <div class="pr-txt">
+                            <div class="price">$139.00/-</div>
+                            <p>Sport Max Shoes</p>
+                            <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-box">
+                        <div class="pr-img">
+                            <div class="img"><img src="img/pr-3.png" alt="Sport Max Shoes"></div>
+                            <div class="tags">
+                                <div class="nav-btn"><a href="">ເພີ່ມໃສ່ກະຕ່າ</a></div>
+                                <ul class="share-pr"><li><a href=""><i class="fa-solid fa-eye"></i></a></li></ul>
+                            </div>
+                        </div>
+                        <div class="pr-txt">
+                            <div class="price">$139.00/-</div>
+                            <p>Sport Max Shoes</p>
+                            <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-box">
+                        <div class="pr-img">
+                            <div class="img"><img src="img/pr-3.png" alt="Sport Max Shoes"></div>
+                            <div class="tags">
+                                <div class="nav-btn"><a href="">ເພີ່ມໃສ່ກະຕ່າ</a></div>
+                                <ul class="share-pr"><li><a href=""><i class="fa-solid fa-eye"></i></a></li></ul>
+                            </div>
+                        </div>
+                        <div class="pr-txt">
+                            <div class="price">$139.00/-</div>
+                            <p>Sport Max Shoes</p>
+                            <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-box">
+                        <div class="pr-img">
+                            <div class="img"><img src="img/pr-3.png" alt="Sport Max Shoes"></div>
+                            <div class="tags">
+                                <div class="nav-btn"><a href="">ເພີ່ມໃສ່ກະຕ່າ</a></div>
+                                <ul class="share-pr"><li><a href=""><i class="fa-solid fa-eye"></i></a></li></ul>
+                            </div>
+                        </div>
+                        <div class="pr-txt">
+                            <div class="price">$139.00/-</div>
+                            <p>Sport Max Shoes</p>
+                            <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-box">
+                        <div class="pr-img">
+                            <div class="img"><img src="img/pr-3.png" alt="Sport Max Shoes"></div>
+                            <div class="tags">
+                                <div class="nav-btn"><a href="">ເພີ່ມໃສ່ກະຕ່າ</a></div>
+                                <ul class="share-pr"><li><a href=""><i class="fa-solid fa-eye"></i></a></li></ul>
+                            </div>
+                        </div>
+                        <div class="pr-txt">
+                            <div class="price">$139.00/-</div>
+                            <p>Sport Max Shoes</p>
+                            <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-box">
+                        <div class="pr-img">
+                            <div class="img"><img src="img/pr-3.png" alt="Sport Max Shoes"></div>
+                            <div class="tags">
+                                <div class="nav-btn"><a href="">ເພີ່ມໃສ່ກະຕ່າ</a></div>
+                                <ul class="share-pr"><li><a href=""><i class="fa-solid fa-eye"></i></a></li></ul>
+                            </div>
+                        </div>
+                        <div class="pr-txt">
+                            <div class="price">$139.00/-</div>
+                            <p>Sport Max Shoes</p>
+                            <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-box">
+                        <div class="pr-img">
+                            <div class="img"><img src="img/pr-3.png" alt="Sport Max Shoes"></div>
+                            <div class="tags">
+                                <div class="nav-btn"><a href="">ເພີ່ມໃສ່ກະຕ່າ</a></div>
+                                <ul class="share-pr"><li><a href=""><i class="fa-solid fa-eye"></i></a></li></ul>
+                            </div>
+                        </div>
+                        <div class="pr-txt">
+                            <div class="price">$139.00/-</div>
+                            <p>Sport Max Shoes</p>
+                            <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-box">
+                        <div class="pr-img">
+                            <div class="img"><img src="img/pr-3.png" alt="Sport Max Shoes"></div>
+                            <div class="tags">
+                                <div class="nav-btn"><a href="">ເພີ່ມໃສ່ກະຕ່າ</a></div>
+                                <ul class="share-pr"><li><a href=""><i class="fa-solid fa-eye"></i></a></li></ul>
+                            </div>
+                        </div>
+                        <div class="pr-txt">
+                            <div class="price">$139.00/-</div>
+                            <p>Sport Max Shoes</p>
+                            <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-box">
+                        <div class="pr-img">
+                            <div class="img"><img src="img/pr-3.png" alt="Sport Max Shoes"></div>
+                            <div class="tags">
+                                <div class="nav-btn"><a href="">ເພີ່ມໃສ່ກະຕ່າ</a></div>
+                                <ul class="share-pr"><li><a href=""><i class="fa-solid fa-eye"></i></a></li></ul>
+                            </div>
+                        </div>
+                        <div class="pr-txt">
+                            <div class="price">$139.00/-</div>
+                            <p>Sport Max Shoes</p>
+                            <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 showcat-sec bg-color">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="show-product">
+                        <img src="img/show-1.png" alt="Walk with Assurance">
+                        <div class="show-txt">
+                            <h6>Walk with Assurance</h6>
+                            <p>ຮອງເທົ້າໃສ່ສະບາຍ ສຳລັບທຸກມື້.</p>
+                            <div class="nav-btn mt-4"><a href="">Shop Now</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="show-product">
+                        <img src="img/show-2.png" alt="Fashionably Stepping Ahead">
+                        <div class="show-txt">
+                            <h6>Fashionably Stepping Ahead !</h6>
+                            <p>ເລືອກ style ທີ່ເໝາະກັບເຈົ້າ.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="order-overlay" class="order-overlay"></div>
+    <section id="order" class="order-drawer py-5 bg-light" aria-hidden="true">
+        <div class="container">
+            <button id="close-order-btn" class="order-close-btn" type="button" aria-label="ປິດກະຕ່າ">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center mb-5">
+                <h3 class="title">ລາຍການສັ່ງຊື້ ແລະ ຊຳລະເງິນ</h3>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-7">
+                    <div class="card shadow-sm p-4 border-0">
+                        <h5 class="mb-4 fw-bold"><i class="fas fa-shopping-cart text-primary"></i> ສິນຄ້າໃນກະຕ່າຂອງທ່ານ</h5>
+                        <div class="table-responsive">
+                            <table class="table align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>ຮູບ</th>
+                                        <th>ຊື່ສິນຄ້າ</th>
+                                        <th>ໄຊ້</th>
+                                        <th>ລາຄາ</th>
+                                        <th>ຈຳນວນ</th>
+                                        <th>ລວມ</th>
+                                        <th>ລຶບ</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="cart-table-body"></tbody>
+                            </table>
+                        </div>
+                        <div id="empty-cart-msg" class="text-center py-4 text-muted">
+                            <i class="fas fa-folder-open fs-2 mb-2"></i>
+                            <p>ຍັງບໍ່ມີສິນຄ້າໃນກະຕ່າເທື່ອ</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="card shadow-sm p-4 border-0 mb-4 bg-white">
+                        <h5 class="fw-bold mb-3">ສະຫຼຸບບິນ</h5>
+                        <div class="input-group mb-3">
+                            <input type="text" id="coupon-input" class="form-control" placeholder="ໃສ່ລະຫັດສ່ວນຫຼຸດ KL50">
+                            <button class="btn btn-dark" type="button" id="apply-coupon-btn">ໃຊ້ໂຄ້ດ</button>
+                        </div>
+                        <div id="coupon-msg" class="small mb-3"></div>
+                        <hr>
+                        <div class="d-flex justify-content-between mb-2"><span>ລວມຄ່າສິນຄ້າ:</span><span id="subtotal-price">$0.00</span></div>
+                        <div class="d-flex justify-content-between mb-2 text-danger"><span>ສ່ວນຫຼຸດ:</span><span id="discount-price">-$0.00</span></div>
+                        <div class="d-flex justify-content-between mb-2 text-success"><span>ຄ່າຈັດສົ່ງ:</span><span id="shipping-price">ຟຣີ</span></div>
+                        <hr>
+                        <div class="d-flex justify-content-between mb-3 fw-bold fs-5"><span>ຍອດລວມສຸດທິ:</span><span id="total-price" class="text-primary">$0.00</span></div>
+                    </div>
+
+                    <div class="card shadow-sm p-4 border-0 bg-white">
+                        <h5 class="fw-bold mb-4"><i class="fas fa-user-edit text-primary"></i> ຂໍ້ມູນການຈັດສົ່ງ</h5>
+                        <form id="checkout-form">
+                            <div class="mb-3">
+                                <label class="form-label">ຊື່ ແລະ ນາມສະກຸນ *</label>
+                                <input type="text" id="cus-name" class="form-control" required placeholder="ກອກຊື່ຜູ້ຮັບ">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">ເບີໂທຕິດຕໍ່ *</label>
+                                <input type="tel" id="cus-phone" class="form-control" required placeholder="ເບີໂທ WhatsApp">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">ບ້ານ, ເມືອງ, ແຂວງ *</label>
+                                <textarea id="cus-address" class="form-control" rows="3" required placeholder="ກອກທີ່ຢູ່ຈັດສົ່ງໃຫ້ລະອຽດ"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">ຂົນສົ່ງທີ່ສະດວກ *</label>
+                                <select id="cus-shipping" class="form-select">
+                                    <option value="ຮຸ່ງອາລຸນ">ຮຸ່ງອາລຸນ (HAL)</option>
+                                    <option value="ອານຸສິດ">ອານຸສິດ (Anousith)</option>
+                                    <option value="ມີໄຊ">ມີໄຊ (Mixay)</option>
+                                    <option value="ກີວີ">ກີວີ (Kiwi)</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100 py-2 fw-bold">
+                                <i class="fas fa-receipt"></i> ຢືນຢັນສັ່ງຊື້ & ອອກບິນ
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>KL SHOP</h3>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/17xKYTrZsk/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/ktskun__07/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@rrydhdhdh?_r=1&_t=ZS-93z7ontCBex" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://wa.me/92333621" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3><i class="fas fa-map-marker-alt"></i> ທີ່ຢູ່ຮ້ານ</h3>
+                <p>ບ້ານ ໜອງດວ້ງເໜືອ, ເມືອງ ສີໂຄດຕະບອງ</p>
+                <p>ນະຄອນຫຼວງວຽງຈັນ</p>
+            </div>
+            <div class="footer-section">
+                <h3><i class="fas fa-phone"></i> ຕິດຕໍ່</h3>
+                <p>ໂທ: 20 9233 3621</p>
+                <p>ອີເມລ: kolakunhts123@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h3><i class="fas fa-clock"></i> ເວລາເປີດບໍລິການ</h3>
+                <p>ຈັນ - ເສົາ: 10:00 - 22:00</p>
+                <p>ອາທິດ: 10:00 - 20:00</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="lo">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ໃບບິນຮັບເງິນ - KL SHOP</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body class="receipt-page-body">
+    <main class="receipt-page">
+        <section class="receipt-paper" id="receipt-paper">
+            <div class="receipt-header">
+                <div class="receipt-brand">
+                    <img src="img/kor.png" alt="KL SHOP" class="receipt-logo">
+                </div>
+                <div class="receipt-title">
+                    <h1>KL SHOP</h1>
+                    <p>ໃບບິນຮັບເງິນ / Receipt</p>
+                </div>
+                <div class="receipt-meta">
+                    <p>ເລກບິນ: <strong id="receipt-no">-</strong></p>
+                    <p>ວັນທີ: <strong id="receipt-date">-</strong></p>
+                </div>
+            </div>
+
+            <div class="receipt-info-grid">
+                <div class="receipt-info-box">
+                    <h2><i class="fas fa-user"></i> ຂໍ້ມູນລູກຄ້າ</h2>
+                    <p>ຊື່: <strong id="customer-name">-</strong></p>
+                    <p>ເບີໂທ: <strong id="customer-phone">-</strong></p>
+                    <p>ທີ່ຢູ່: <strong id="customer-address">-</strong></p>
+                    <p>ຂົນສົ່ງ: <strong id="customer-shipping">-</strong></p>
+                </div>
+                <div class="receipt-info-box">
+                    <h2><i class="fas fa-store"></i> ຂໍ້ມູນຮ້ານ</h2>
+                    <p>ໂທ: <strong>20 9233 3621</strong></p>
+                    <!-- <p>ອີເມລ: <strong>kolakunhts123@gmail.com</strong></p> -->
+                    <p>ທີ່ຢູ່: <strong>ບ.ໜອງດວ້ງ,ມ.ສີໂຄດຕະບອງ,ນະຄອນຫຼວງວຽງຈັນ</strong></p>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table receipt-table align-middle">
+                    <thead>
+                        <tr>
+                            <th>ສິນຄ້າ</th>
+                            <th>ໄຊ</th>
+                            <th>ລາຄາ</th>
+                            <th>ຈຳນວນ</th>
+                            <th class="text-end">ລວມ</th>
+                        </tr>
+                    </thead>
+                    <tbody id="receipt-items"></tbody>
+                </table>
+            </div>
+
+            <div class="receipt-summary">
+                <div><span>ລວມຄ່າສິນຄ້າ:</span><strong id="receipt-subtotal">$0.00</strong></div>
+                <div><span>ສ່ວນຫຼຸດ:</span><strong id="receipt-discount">-$0.00</strong></div>
+                <div><span>ຄ່າຈັດສົ່ງ:</span><strong>ຟຣີ</strong></div>
+                <div class="receipt-total"><span>ຍອດລວມສຸດທິ:</span><strong id="receipt-total">$0.00</strong></div>
+            </div>
+
+            <p class="receipt-thanks">ຂອບໃຈທີ່ອຸດໜູນ KL SHOP</p>
+        </section>
+
+        <div class="receipt-actions">
+            <a href="index.html" class="btn btn-outline-dark"><i class="fas fa-arrow-left"></i> ກັບໄປໜ້າຮ້ານ</a>
+            <button type="button" class="btn btn-primary" onclick="window.print()"><i class="fas fa-print"></i> ພິມໃບບິນ</button>
+        </div>
+    </main>
+
+    <script>
+        const receipt = JSON.parse(localStorage.getItem('klshop_receipt') || 'null');
+
+        function money(value) {
+            return `$${Number(value || 0).toFixed(2)}`;
+        }
+
+        if (!receipt) {
+            document.getElementById('receipt-paper').innerHTML = `
+                <div class="text-center py-5">
+                    <h1>ບໍ່ພົບຂໍ້ມູນໃບບິນ</h1>
+                    <p class="text-muted">ກະລຸນາກັບໄປເລືອກສິນຄ້າ ແລະ ຢືນຢັນການສັ່ງຊື້ກ່ອນ.</p>
+                </div>
+            `;
+        } else {
+            document.getElementById('receipt-no').textContent = receipt.receiptNo;
+            document.getElementById('receipt-date').textContent = receipt.createdAt;
+            document.getElementById('customer-name').textContent = receipt.customer.name;
+            document.getElementById('customer-phone').textContent = receipt.customer.phone;
+            document.getElementById('customer-address').textContent = receipt.customer.address;
+            document.getElementById('customer-shipping').textContent = receipt.customer.shipping;
+            document.getElementById('receipt-items').innerHTML = receipt.items.map(item => `
+                <tr>
+                    <td>
+                        <div class="receipt-product">
+                            <img src="${item.img}" alt="${item.name}">
+                            <strong>${item.name}</strong>
+                        </div>
+                    </td>
+                    <td>${item.size}</td>
+                    <td>${money(item.price)}</td>
+                    <td>${item.qty}</td>
+                    <td class="text-end fw-bold">${money(item.total)}</td>
+                </tr>
+            `).join('');
+            document.getElementById('receipt-subtotal').textContent = money(receipt.summary.subtotal);
+            document.getElementById('receipt-discount').textContent = `-${money(receipt.summary.discount)}`;
+            document.getElementById('receipt-total').textContent = money(receipt.summary.finalTotal);
+        }
+    </script>
+</body>
+
+</html>
