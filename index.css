@@ -19,6 +19,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
     padding: 10px 20px;
     background-color: #ffffff;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -26,7 +27,7 @@
     top: 0;
     z-index: 1000;
     gap: 20px;
-    height: 70px;
+    min-height: 70px;
 }
 
 .logo {
@@ -43,7 +44,7 @@
 
 /* 3. Marquee (ແຖບຂໍ້ຄວາມເລື່ອນ) */
 .announcement-bar {
-    flex-grow: 1;
+    flex: 1 1 260px;
     overflow: hidden;
     white-space: nowrap;
     background-color: #f8f9fa;
@@ -81,8 +82,11 @@
 /* 4. Navigation Menu */
 .nav-menu {
     display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
     gap: 20px;
-    flex-shrink: 0;
+    flex: 0 1 auto;
 }
 
 .nav-link {
@@ -162,9 +166,20 @@ h3.title {
     margin-bottom: 20px;
 }
 
+.deal-sec .row {
+    align-items: stretch;
+}
+
+.deal-sec .row>[class*="col-"] {
+    display: flex;
+}
+
 .product-box {
     width: 100%;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     border-radius: 12px;
     margin-bottom: 25px;
@@ -174,12 +189,27 @@ h3.title {
 
 .pr-img {
     width: 100%;
+    height: 300px;
     overflow: hidden;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+}
+
+.pr-img .img {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .pr-img img {
     width: 100%;
+    height: 100%;
+    object-fit: contain;
     transition: 0.5s ease;
 }
 
@@ -222,8 +252,21 @@ ul.share-pr li a:hover {
 }
 
 .pr-txt {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 160px;
     text-align: center;
     padding: 20px;
+}
+
+.pr-txt p {
+    min-height: 48px;
+    margin: 8px 0 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .rating i {
@@ -604,17 +647,17 @@ footer {
 
 .cart-floating-btn {
     position: fixed;
-    top: 88px;
-    right: 22px;
-    width: 58px;
-    height: 58px;
+    right: 24px;
+    bottom: 24px;
+    width: 62px;
+    height: 62px;
     border: none;
     border-radius: 50%;
     background: #000;
     color: #fff;
     display: grid;
     place-content: center;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 16px 35px rgba(0, 0, 0, 0.28);
     cursor: pointer;
     z-index: 1200;
     transition: transform 0.2s ease, background 0.2s ease;
@@ -622,7 +665,7 @@ footer {
 
 .cart-floating-btn:hover {
     background: var(--second-clr);
-    transform: translateY(-2px);
+    transform: translateY(-4px);
 }
 
 .cart-floating-btn i {
@@ -706,6 +749,55 @@ body.order-drawer-open {
     overflow: hidden;
 }
 
+@media (max-width: 768px) {
+    .main-header {
+        justify-content: center;
+        height: auto;
+        padding: 12px 14px;
+        gap: 12px;
+    }
+
+    .announcement-bar {
+        order: 3;
+        flex-basis: 100%;
+        height: 32px;
+    }
+
+    .marquee-text {
+        font-size: 14px;
+    }
+
+    .nav-menu {
+        justify-content: center;
+        gap: 14px;
+    }
+
+    .nav-link {
+        font-size: 12px;
+    }
+
+    .nav-link i {
+        font-size: 18px;
+    }
+
+    .cart-floating-btn {
+        right: 16px;
+        bottom: 16px;
+        width: 56px;
+        height: 56px;
+    }
+}
+
+@media (max-width: 576px) {
+    .pr-img {
+        height: 260px;
+    }
+
+    .pr-txt {
+        min-height: 140px;
+    }
+}
+
 /* ປັບໃຫ້ Smooth ເວລາກົດປຸ່ມເມນູແລ້ວເລື່ອນໄປຫາ Section ນັ້ນໆ */
 html {
     scroll-behavior: smooth;
@@ -764,8 +856,8 @@ html {
 .receipt-header h1 {
     margin-bottom: 6px;
     color: #000;
-    font-size: clamp(30px, 5.5vw, 20px);
-    font-weight: 50;
+    font-size: clamp(28px, 5vw, 46px);
+    font-weight: 700;
     line-height: 0.95;
     letter-spacing: 2px;
 }
@@ -915,5 +1007,275 @@ html {
 
     .receipt-actions {
         display: none;
+    }
+}
+
+/* Final responsive polish for desktop, tablet, and mobile */
+img {
+    max-width: 100%;
+}
+
+.deal-sec .container,
+.showcat-sec .container {
+    max-width: 1200px;
+}
+
+@media (min-width: 992px) {
+    .deal-sec .row {
+        row-gap: 34px;
+    }
+
+    .product-box {
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .product-box:hover {
+        transform: translateY(-6px);
+        box-shadow: rgba(100, 100, 111, 0.28) 0 14px 36px 0;
+    }
+}
+
+@media (max-width: 991px) {
+    .main-header {
+        align-items: center;
+        gap: 12px;
+    }
+
+    .logo img {
+        height: 46px;
+    }
+
+    .announcement-bar {
+        order: 3;
+        flex-basis: 100%;
+    }
+
+    .nav-menu {
+        margin-left: auto;
+        gap: 16px;
+    }
+
+    .banner-sec {
+        padding: 110px 0;
+        background-position: center;
+    }
+
+    .banner-text h1 {
+        font-size: 32px;
+        line-height: 1.35;
+    }
+
+    h3.title {
+        font-size: 30px;
+    }
+
+    .pr-img {
+        height: 280px;
+    }
+
+    .order-drawer {
+        width: min(760px, 100vw);
+    }
+}
+
+@media (max-width: 767px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    .main-header {
+        justify-content: center;
+        padding: 10px 12px;
+        gap: 10px;
+    }
+
+    .logo {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .logo img {
+        height: 52px;
+    }
+
+    .announcement-bar {
+        order: 2;
+        flex: 1 1 100%;
+        height: 32px;
+    }
+
+    .marquee-text {
+        font-size: 14px;
+    }
+
+    .nav-menu {
+        order: 3;
+        width: 100%;
+        justify-content: space-around;
+        gap: 6px;
+    }
+
+    .nav-link {
+        min-width: 58px;
+        font-size: 11px;
+        line-height: 1.25;
+    }
+
+    .nav-link i {
+        font-size: 18px;
+        margin-bottom: 4px;
+    }
+
+    .banner-sec {
+        padding: 72px 0;
+        text-align: center;
+    }
+
+    .text-animation {
+        font-size: 22px;
+    }
+
+    .banner-text span {
+        padding-left: 0;
+        font-size: 14px;
+    }
+
+    .banner-text span:before {
+        display: none;
+    }
+
+    .banner-text h1 {
+        font-size: 24px;
+        line-height: 1.45;
+    }
+
+    .deal-sec {
+        padding-top: 38px !important;
+        padding-bottom: 38px !important;
+    }
+
+    h3.title {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .deal-sec .pe-5 {
+        padding-right: 0 !important;
+    }
+
+    .product-box {
+        max-width: 430px;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 14px;
+    }
+
+    .pr-img {
+        height: 250px;
+    }
+
+    .pr-txt {
+        min-height: 130px;
+        padding: 16px;
+    }
+
+    .nav-btn {
+        opacity: 1;
+        transform: none;
+        bottom: 14px;
+    }
+
+    .nav-btn a {
+        padding: 8px 20px;
+        font-size: 13px;
+    }
+
+    ul.share-pr {
+        transform: none;
+        opacity: 1;
+    }
+
+    .show-txt {
+        padding: 16px;
+    }
+
+    .show-txt h6 {
+        width: 100%;
+        font-size: 22px;
+    }
+
+    .show-txt p {
+        width: 90%;
+        font-size: 13px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        text-align: center;
+    }
+
+    .footer-section h3,
+    .social-links {
+        justify-content: center;
+    }
+
+    .order-drawer {
+        width: 100vw;
+        padding-top: 22px !important;
+    }
+
+    .order-drawer .card {
+        padding: 16px !important;
+    }
+
+    .table {
+        min-width: 680px;
+    }
+
+    .qv-box {
+        width: calc(100vw - 22px);
+    }
+
+    .qv-content {
+        padding: 22px;
+    }
+
+    .qv-img img {
+        height: 240px;
+    }
+
+    .cart-floating-btn {
+        right: 14px;
+        bottom: 14px;
+        width: 54px;
+        height: 54px;
+    }
+}
+
+@media (max-width: 420px) {
+    .nav-link {
+        min-width: 50px;
+        font-size: 10px;
+    }
+
+    .nav-link i {
+        font-size: 16px;
+    }
+
+    .pr-img {
+        height: 220px;
+    }
+
+    .banner-text h1 {
+        font-size: 21px;
+    }
+
+    .receipt-page {
+        width: calc(100% - 16px);
+    }
+
+    .receipt-paper {
+        padding: 16px;
     }
 }
