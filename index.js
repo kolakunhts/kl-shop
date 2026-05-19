@@ -169,13 +169,13 @@ window.removeFromCart = function (index) {
 };
 
 // Pop-up ແຈ້ງເຕືອນເວລາເພີ່ມສິນຄ້າ
-// function showToastNotification(name, size, img) {
-//     const toast = document.createElement('div');
-//     toast.style.cssText = `position: fixed; bottom: 20px; right: 20px; background: #222; color: #fff; padding: 12px 20px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 99999; display: flex; align-items: center; gap: 12px; font-size: 13px; animation: slideIn 0.3s ease, fadeOut 0.3s ease 2.2s forwards;`;
-//     toast.innerHTML = `<img src="${img}" style="width: 35px; height: 35px; object-fit: cover; border-radius: 4px;"><div><strong style="color: #a2daf8;">ເພີ່ມເຂົ້າກະຕ່າແລ້ວ!</strong><p style="margin:0; font-size:11px; color:#bbb;">${name} (Size: ${size})</p></div>`;
-//     document.body.appendChild(toast);
-//     setTimeout(() => toast.remove(), 2500);
-// }
+function showToastNotification(name, size, img) {
+    const toast = document.createElement('div');
+    toast.style.cssText = `position: fixed; bottom: 20px; right: 20px; background: #222; color: #fff; padding: 12px 20px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 99999; display: flex; align-items: center; gap: 12px; font-size: 13px; animation: slideIn 0.3s ease, fadeOut 0.3s ease 2.2s forwards;`;
+    toast.innerHTML = `<img src="${img}" style="width: 35px; height: 35px; object-fit: cover; border-radius: 4px;"><div><strong style="color: #a2daf8;">ເພີ່ມເຂົ້າກະຕ່າແລ້ວ!</strong><p style="margin:0; font-size:11px; color:#bbb;">${name} (Size: ${size})</p></div>`;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 2500);
+}
 
 // ==========================================
 // 4. QUICK VIEW MODAL (ໜ້າຕ່າງ Pop-up ເບິ່ງສິນຄ້າ)
