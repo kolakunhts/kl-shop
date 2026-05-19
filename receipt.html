@@ -59,10 +59,10 @@
             </div>
 
             <div class="receipt-summary">
-                <div><span>ລວມຄ່າສິນຄ້າ:</span><strong id="receipt-subtotal">$0.00</strong></div>
-                <div><span>ສ່ວນຫຼຸດ:</span><strong id="receipt-discount">-$0.00</strong></div>
+                <div><span>ລວມຄ່າສິນຄ້າ:</span><strong id="receipt-subtotal">0 ກີບ</strong></div>
+                <div><span>ສ່ວນຫຼຸດ:</span><strong id="receipt-discount">0 ກີບ</strong></div>
                 <div><span>ຄ່າຈັດສົ່ງ:</span><strong>ຟຣີ</strong></div>
-                <div class="receipt-total"><span>ຍອດລວມສຸດທິ:</span><strong id="receipt-total">$0.00</strong></div>
+                <div class="receipt-total"><span>ຍອດລວມສຸດທິ:</span><strong id="receipt-total">0 ກີບ</strong></div>
             </div>
 
             <p class="receipt-thanks">ຂອບໃຈທີ່ອຸດໜູນ KL SHOP</p>
@@ -78,7 +78,7 @@
         const receipt = JSON.parse(localStorage.getItem('klshop_receipt') || 'null');
 
         function money(value) {
-            return `$${Number(value || 0).toFixed(2)}`;
+            return `${Math.round(Number(value) || 0).toLocaleString('lo-LA')} ກີບ`;
         }
 
         if (!receipt) {

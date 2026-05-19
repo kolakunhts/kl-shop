@@ -35,7 +35,20 @@ document.addEventListener("DOMContentLoaded", typeEffect);
 // ==========================================
 let cart = [];
 let discountPercent = 0;
-const COUPON_CODE = "KL50"; // ໂຄ້ດສ່ວນຫຼຸດ 50% ທີ່ເຈົ້າຕັ້ງໄວ້ຢູ່ Banner
+const COUPON_CODE = "LAO2026"; // ໂຄ້ດສ່ວນຫຼຸດ 5% 
+
+function parseKipPrice(priceText) {
+    const normalized = String(priceText)
+        .replace(/ກີບ/g, '')
+        .replace(/\s/g, '')
+        .replace(/[^\d]/g, '');
+
+    return Number(normalized) || 0;
+}
+
+function formatKip(amount) {
+    return `${Math.round(Number(amount) || 0).toLocaleString('lo-LA')} ກີບ`;
+}
 
 function openOrderDrawer() {
     const order = document.getElementById('order');
@@ -77,7 +90,7 @@ function addToCart(name, price, img, size, productId) {
             key: cartKey,
             productId: productId || name,
             name: name,
-            price: parseFloat(price.replace(/[^0-9.]/g, '')),
+            price: parseKipPrice(price),
             img: img,
             size: selectedSize,
             qty: 1
@@ -118,7 +131,7 @@ function updateCartUI() {
                     <td><img src="${item.img}" class="cart-img"></td>
                     <td><p class="mb-0 fw-bold small">${item.name}</p></td>
                     <td><span class="badge bg-secondary">${item.size}</span></td>
-                    <td>$${item.price.toFixed(2)}</td>
+                    <td>${formatKip(item.price)}</td>
                     <td>
                         <div class="d-flex align-items-center gap-1">
                             <button class="btn btn-sm btn-outline-dark btn-qty" onclick="changeQty(${index}, -1)">-</button>
@@ -126,7 +139,7 @@ function updateCartUI() {
                             <button class="btn btn-sm btn-outline-dark btn-qty" onclick="changeQty(${index}, 1)">+</button>
                         </div>
                     </td>
-                    <td class="fw-bold text-dark">$${itemTotal.toFixed(2)}</td>
+                    <td class="fw-bold text-dark">${formatKip(itemTotal)}</td>
                     <td><button class="btn btn-sm btn-link text-danger p-0" onclick="removeFromCart(${index})"><i class="fas fa-trash-alt"></i></button></td>
                 </tr>
             `;
@@ -148,9 +161,9 @@ function updateCartUI() {
     const discountAmount = subtotal * (discountPercent / 100);
     const finalTotal = subtotal - discountAmount;
 
-    document.getElementById('subtotal-price').textContent = `$${subtotal.toFixed(2)}`;
-    document.getElementById('discount-price').textContent = `-$${discountAmount.toFixed(2)}`;
-    document.getElementById('total-price').textContent = `$${finalTotal.toFixed(2)}`;
+    document.getElementById('subtotal-price').textContent = formatKip(subtotal);
+    document.getElementById('discount-price').textContent = `-${formatKip(discountAmount)}`;
+    document.getElementById('total-price').textContent = formatKip(finalTotal);
 }
 
 // ຟັງຊັນ ເພີ່ມ/ລົບ ຈຳນວນສິນຄ້າ (+/-)
@@ -245,7 +258,7 @@ function getProductDataFromBox(box) {
     return {
         id: `product-${productIndex}-${box.querySelector('img')?.getAttribute('src') || ''}`,
         name: box.querySelector('.pr-txt p')?.textContent.trim() || "KL SHOP Product",
-        price: box.querySelector('.price')?.textContent.trim() || "$0.00",
+        price: box.querySelector('.price')?.textContent.trim() || "0.00",
         img: box.querySelector('img')?.src || ""
     };
 }
@@ -320,8 +333,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const msg = document.getElementById('coupon-msg');
 
         if (input.toUpperCase() === COUPON_CODE) {
-            discountPercent = 50; // ຫຼຸດ 50% ຕາມປ້າຍ Banner
-            msg.textContent = "✓ ນຳໃຊ້ລະຫັດສ່ວນຫຼຸດ 50% ສຳເລັດ!";
+            discountPercent = 5; // ຫຼຸດ 5% ຕາມປ້າຍ Banner
+            msg.textContent = "✓ ນຳໃຊ້ລະຫັດສ່ວນຫຼຸດ 5% ສຳເລັດ!";
             msg.className = "small mb-3 text-success fw-bold";
         } else {
             discountPercent = 0;
