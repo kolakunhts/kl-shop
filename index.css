@@ -8,10 +8,28 @@
     text-decoration: none;
 }
 
+.fas,
+.fa-solid {
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 900 !important;
+}
+
+.fa {
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 900 !important;
+}
+
+.fab,
+.fa-brands {
+    font-family: "Font Awesome 6 Brands" !important;
+    font-weight: 400 !important;
+}
+
 :root {
     --first-clr: #000;
     --second-clr: #a2daf8;
     --primary: #7bc5f3;
+   --d: 'Noto Sans Lao', sans-serif; 
 }
 
 /* 2. Header & Navbar */

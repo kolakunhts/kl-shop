@@ -75,7 +75,22 @@
     </main>
 
     <script>
-        const receipt = JSON.parse(localStorage.getItem('klshop_receipt') || 'null');
+        let receipt = null;
+
+        try {
+            receipt = JSON.parse(localStorage.getItem('klshop_receipt') || 'null');
+        } catch (error) {
+            receipt = null;
+        }
+
+        function escapeHTML(value) {
+            return String(value)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
 
         function money(value) {
             return `${Math.round(Number(value) || 0).toLocaleString('lo-LA')} ກີບ`;
@@ -91,27 +106,27 @@
         } else {
             document.getElementById('receipt-no').textContent = receipt.receiptNo;
             document.getElementById('receipt-date').textContent = receipt.createdAt;
-            document.getElementById('customer-name').textContent = receipt.customer.name;
-            document.getElementById('customer-phone').textContent = receipt.customer.phone;
-            document.getElementById('customer-address').textContent = receipt.customer.address;
-            document.getElementById('customer-shipping').textContent = receipt.customer.shipping;
-            document.getElementById('receipt-items').innerHTML = receipt.items.map(item => `
+            document.getElementById('customer-name').textContent = receipt.customer?.name || '-';
+            document.getElementById('customer-phone').textContent = receipt.customer?.phone || '-';
+            document.getElementById('customer-address').textContent = receipt.customer?.address || '-';
+            document.getElementById('customer-shipping').textContent = receipt.customer?.shipping || '-';
+            document.getElementById('receipt-items').innerHTML = (receipt.items || []).map(item => `
                 <tr>
                     <td>
                         <div class="receipt-product">
-                            <img src="${item.img}" alt="${item.name}">
-                            <strong>${item.name}</strong>
+                            <img src="${escapeHTML(item.img)}" alt="${escapeHTML(item.name)}">
+                            <strong>${escapeHTML(item.name)}</strong>
                         </div>
                     </td>
-                    <td>${item.size}</td>
+                    <td>${escapeHTML(item.size)}</td>
                     <td>${money(item.price)}</td>
                     <td>${item.qty}</td>
                     <td class="text-end fw-bold">${money(item.total)}</td>
                 </tr>
             `).join('');
-            document.getElementById('receipt-subtotal').textContent = money(receipt.summary.subtotal);
-            document.getElementById('receipt-discount').textContent = `-${money(receipt.summary.discount)}`;
-            document.getElementById('receipt-total').textContent = money(receipt.summary.finalTotal);
+            document.getElementById('receipt-subtotal').textContent = money(receipt.summary?.subtotal);
+            document.getElementById('receipt-discount').textContent = `-${money(receipt.summary?.discount)}`;
+            document.getElementById('receipt-total').textContent = money(receipt.summary?.finalTotal);
         }
     </script>
 </body>

@@ -1,6 +1,20 @@
 // ==========================================
 // 1. LOADING SCREEN
 // ==========================================
+
+const fontStyle = document.createElement('style');
+fontStyle.innerHTML = `
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@100..900&display=swap');
+    
+    body, button, input, textarea, select {
+        font-family: 'Noto Sans Lao', sans-serif !important;
+    }
+    body {
+        line-height: 1.6;
+        letter-spacing: 0.5px;
+    }
+`;
+document.head.appendChild(fontStyle);
 const loader = document.createElement('div');
 loader.id = 'loader';
 loader.className = 'loader-container';
@@ -36,6 +50,15 @@ document.addEventListener("DOMContentLoaded", typeEffect);
 let cart = [];
 let discountPercent = 0;
 const COUPON_CODE = "LAO2026"; // ໂຄ້ດສ່ວນຫຼຸດ 5% 
+
+function escapeHTML(value) {
+    return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+}
 
 function parseKipPrice(priceText) {
     const normalized = String(priceText)
@@ -117,9 +140,9 @@ function updateCartUI() {
     let subtotal = 0;
 
     if (cart.length === 0) {
-        emptyMsg.style.display = "block";
+        if (emptyMsg) emptyMsg.style.display = "block";
     } else {
-        emptyMsg.style.display = "none";
+        if (emptyMsg) emptyMsg.style.display = "none";
 
         cart.forEach((item, index) => {
             totalQty += item.qty;
@@ -128,9 +151,9 @@ function updateCartUI() {
 
             tbody.innerHTML += `
                 <tr>
-                    <td><img src="${item.img}" class="cart-img"></td>
-                    <td><p class="mb-0 fw-bold small">${item.name}</p></td>
-                    <td><span class="badge bg-secondary">${item.size}</span></td>
+                    <td><img src="${escapeHTML(item.img)}" class="cart-img" alt="${escapeHTML(item.name)}"></td>
+                    <td><p class="mb-0 fw-bold small">${escapeHTML(item.name)}</p></td>
+                    <td><span class="badge bg-secondary">${escapeHTML(item.size)}</span></td>
                     <td>${formatKip(item.price)}</td>
                     <td>
                         <div class="d-flex align-items-center gap-1">
@@ -161,13 +184,18 @@ function updateCartUI() {
     const discountAmount = subtotal * (discountPercent / 100);
     const finalTotal = subtotal - discountAmount;
 
-    document.getElementById('subtotal-price').textContent = formatKip(subtotal);
-    document.getElementById('discount-price').textContent = `-${formatKip(discountAmount)}`;
-    document.getElementById('total-price').textContent = formatKip(finalTotal);
+    const subtotalPrice = document.getElementById('subtotal-price');
+    const discountPrice = document.getElementById('discount-price');
+    const totalPrice = document.getElementById('total-price');
+
+    if (subtotalPrice) subtotalPrice.textContent = formatKip(subtotal);
+    if (discountPrice) discountPrice.textContent = discountAmount > 0 ? `-${formatKip(discountAmount)}` : formatKip(0);
+    if (totalPrice) totalPrice.textContent = formatKip(finalTotal);
 }
 
 // ຟັງຊັນ ເພີ່ມ/ລົບ ຈຳນວນສິນຄ້າ (+/-)
 window.changeQty = function (index, amount) {
+    if (!cart[index]) return;
     cart[index].qty += amount;
     if (cart[index].qty <= 0) {
         cart.splice(index, 1);
@@ -177,6 +205,7 @@ window.changeQty = function (index, amount) {
 
 // ຟັງຊັນ ລຶບສິນຄ້າອອກຈາກກະຕ່າ
 window.removeFromCart = function (index) {
+    if (!cart[index]) return;
     cart.splice(index, 1);
     updateCartUI();
 };
@@ -185,7 +214,7 @@ window.removeFromCart = function (index) {
 function showToastNotification(name, size, img) {
     const toast = document.createElement('div');
     toast.style.cssText = `position: fixed; bottom: 20px; right: 20px; background: #222; color: #fff; padding: 12px 20px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 99999; display: flex; align-items: center; gap: 12px; font-size: 13px; animation: slideIn 0.3s ease, fadeOut 0.3s ease 2.2s forwards;`;
-    toast.innerHTML = `<img src="${img}" style="width: 35px; height: 35px; object-fit: cover; border-radius: 4px;"><div><strong style="color: #a2daf8;">ເພີ່ມເຂົ້າກະຕ່າແລ້ວ!</strong><p style="margin:0; font-size:11px; color:#bbb;">${name} (Size: ${size})</p></div>`;
+    toast.innerHTML = `<img src="${escapeHTML(img)}" alt="${escapeHTML(name)}" style="width: 35px; height: 35px; object-fit: cover; border-radius: 4px;"><div><strong style="color: #a2daf8;">ເພີ່ມເຂົ້າກະຕ່າແລ້ວ!</strong><p style="margin:0; font-size:11px; color:#bbb;">${escapeHTML(name)} (Size: ${escapeHTML(size)})</p></div>`;
     document.body.appendChild(toast);
     setTimeout(() => toast.remove(), 2500);
 }
@@ -329,17 +358,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ລະບົບກວດສອບລະຫັດສ່ວນຫຼຸດ
     document.getElementById('apply-coupon-btn')?.addEventListener('click', () => {
-        const input = document.getElementById('coupon-input').value.trim();
+        const input = document.getElementById('coupon-input')?.value.trim() || '';
         const msg = document.getElementById('coupon-msg');
 
         if (input.toUpperCase() === COUPON_CODE) {
             discountPercent = 5; // ຫຼຸດ 5% ຕາມປ້າຍ Banner
-            msg.textContent = "✓ ນຳໃຊ້ລະຫັດສ່ວນຫຼຸດ 5% ສຳເລັດ!";
-            msg.className = "small mb-3 text-success fw-bold";
+            if (msg) {
+                msg.textContent = "✓ ນຳໃຊ້ລະຫັດສ່ວນຫຼຸດ 5% ສຳເລັດ!";
+                msg.className = "small mb-3 text-success fw-bold";
+            }
         } else {
             discountPercent = 0;
-            msg.textContent = "✗ ລະຫັດສ່ວນຫຼຸດບໍ່ຖືກຕ້ອງ ຫຼື ໝົດອາຍຸ";
-            msg.className = "small mb-3 text-danger";
+            if (msg) {
+                msg.textContent = "✗ ລະຫັດສ່ວນຫຼຸດບໍ່ຖືກຕ້ອງ ຫຼື ໝົດອາຍຸ";
+                msg.className = "small mb-3 text-danger";
+            }
         }
         updateCartUI();
     });
